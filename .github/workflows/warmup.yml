@@ -2,7 +2,10 @@ name: Claude Code Warmup
 
 on:
   schedule:
-    - cron: '45 9 * * 1-5'
+    - cron: '0 10 * * *'   # 07:00 Salvador (10:00 UTC)
+    - cron: '1 15 * * *'   # 12:01 Salvador (15:01 UTC)
+    - cron: '1 20 * * *'   # 17:01 Salvador (20:01 UTC)
+    - cron: '1 1 * * *'    # 22:01 Salvador (01:01 UTC next day)
   workflow_dispatch: {}
 
 concurrency:
