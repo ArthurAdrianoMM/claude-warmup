@@ -2,10 +2,8 @@ name: Claude Code Warmup
 
 on:
   schedule:
-    - cron: '0 10 * * *'   # 07:00 Salvador (10:00 UTC)
-    - cron: '1 15 * * *'   # 12:01 Salvador (15:01 UTC)
-    - cron: '1 20 * * *'   # 17:01 Salvador (20:01 UTC)
-    - cron: '1 1 * * *'    # 22:01 Salvador (01:01 UTC next day)
+    - cron: '0 8 * * 1-5'   # 05:00 Salvador/Bahia (08:00 UTC), Mon-Fri - anchors the 5h window
+    - cron: '0 23 * * 0'    # 20:00 Salvador/Bahia (23:00 UTC), Sunday - weekly-limit ping
   workflow_dispatch: {}
 
 concurrency:
