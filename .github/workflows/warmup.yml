@@ -30,8 +30,10 @@ jobs:
 
       - name: Ping Claude to anchor 5-hour window
         env:
-          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_OAUTH_TOKEN }}
+          RAW_CLAUDE_OAUTH_TOKEN: ${{ secrets.CLAUDE_OAUTH_TOKEN }}
         run: |
+          # Strip any whitespace/line breaks accidentally pasted into the secret
+          export CLAUDE_CODE_OAUTH_TOKEN="$(printf %s "$RAW_CLAUDE_OAUTH_TOKEN" | tr -d '[:space:]')"
           mkdir -p ~/.claude
           echo '{"hasCompletedOnboarding":true}' > ~/.claude.json
           output_file="$(mktemp)"
